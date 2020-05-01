@@ -1,5 +1,8 @@
-from django.apps import AppConfig
+# pylint: disable=missing-module-docstring
+
+from django.apps import AppConfig as AC
 
 
-class AppConfig(AppConfig):
+# pylint: disable=missing-class-docstring
+class AppConfig(AC):
     name = 'app'
