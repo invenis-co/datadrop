@@ -22,15 +22,6 @@ sentry-sdk = "^0.14.2"
 coverage = "^5.0.3"
 
 
-[tool.pylint.format]
-max-line-length = 120
-no-space-check = ""
-
-[tool.pylint.reports]
-output-format = "colorized"
-reports = "yes"
-
-
 [build-system]
 requires = ["poetry>=0.12"]
 build-backend = "poetry.masonry.api"
