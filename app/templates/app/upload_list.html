@@ -1,0 +1,33 @@
+{% extends "app/base.html" %}
+{% load bootstrap4 static %}
+
+{% block content %}
+    <div class="text-center">
+        <div class="container-sm">
+            <div class="col-md-8 offset-md-2">
+                <div style="margin: 50px; padding:10px">
+                    <table class="table">
+                    <tr>
+                        <th>ID</th>
+                        <th>Creation date</th>
+                        <th>Company</th>
+                        <th>File Name</th>
+                        <th>Downloads count</th>
+                        <th>Delete</th>
+                    </tr>
+                        {% for upload in object_list %}
+                            <tr>
+                                <td>{{ upload.pk}}</td>
+                                <td>{{ upload.created_at}}</td>
+                                <td>{{ upload.company }}</td>
+                                <td><a href="{% url 'download' upload.pk %}">{{ upload.file.name }}</a></td>
+                                <td><a href="{% url 'downloads' upload.pk %}" class="badge badge-info">{{ upload.download_count }}</a></td>
+                                <td><a href="{% url 'delete-upload' upload.pk %}"><i class="fa fa-trash" style="color: #dd4444"></i></a></td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

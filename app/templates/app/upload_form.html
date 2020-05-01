@@ -1,0 +1,21 @@
+{% extends "app/base.html" %}
+{% load bootstrap4 %}
+
+{% block content %}
+    <div class="container-sm">
+        <div class="col-md-4 offset-md-4">
+            <div style="border: solid 1px #ccc; border-radius: 10px ;margin: 50px; padding:10px">
+                <form method="post" enctype="multipart/form-data" >
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                    <div class="text-center">
+                        <input class="btn primary-bg-color" type="submit" value="Upload" />
+                        <br/>
+                        <i class="fa fa-lock primary-color" style="font-size: xx-large"></i>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

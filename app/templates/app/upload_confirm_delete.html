@@ -1,0 +1,15 @@
+{% extends "app/base.html" %}
+{% load bootstrap4 %}
+
+{% block content %}
+    <div class="container-sm">
+        <div class="col-md-4 offset-md-4">
+            <div class="text-center">
+                <form method="post">{% csrf_token %}
+                    <p>Are you sure you want to delete "{{ object.file.name }}"?</p>
+                    <input class="btn btn-primary" type="submit" value="Confirm" />
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

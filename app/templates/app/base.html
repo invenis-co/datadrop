@@ -1,0 +1,65 @@
+{% load static bootstrap4 %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% bootstrap_css %}
+    {% bootstrap_javascript jquery='full' %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="shortcut icon" type="image/png" href="{% static 'app/images/favicon.ico' %}"/>
+    <title>{% block title %}Data Drop{% endblock %}</title>
+    <style type="text/css" media="screen">
+        a:hover {
+            color: #aaa;
+            text-decoration: none;
+        }
+        a{
+            color: #6ec1e4;
+        }
+        .primary-color{
+            color: #6ec1e4;
+        }
+        .primary-bg-color{
+            background-color: #6ec1e4;
+            color: #fff;
+        }
+    </style>
+
+    {% block headers %}{% endblock %}
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a href="{% url 'index' %}"><i class="fa fa-cloud-upload"></i> DataDrop</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'uploads' %}"> <i class="fa fa-list primary-color"></i> Uploads</a>
+                </li>
+            {% endif %}
+            {% if user.is_staff or user.is_superuser %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'admin:index' %}"><i class="fa fa-gear primary-color"></i> Admin</a>
+                </li>
+            {% endif %}
+            {% if user.is_authenticated %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}"><i class="fa fa-sign-out primary-color"></i> Logout</a></li>
+            {% else %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'login' %}"><i class="fa fa-sign-in primary-color"></i> Login</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+{% block content %}{% endblock %}
+</body>
+</html>
