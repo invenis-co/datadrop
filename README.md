@@ -1,16 +1,18 @@
 # DataDrop
+Easily get files from other people.
 
 ## Features
-- allow external user to upload files without account
+- allow external users to upload files without account (just send them the link)
 - allow registered users to download uploaded files
 - log registred users downloads
+
 ## Installation for prod
 Build the Docker
 ```bash
 ./build-docker.sh
 ```
 
-Edit settings-prod.py to setup your SMTP conf (or remove it)
+Edit *settings-prod.py* to setup your SMTP conf (or remove it)
 
 Run the Docker
 ```bash
