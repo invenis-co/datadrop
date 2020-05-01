@@ -5,6 +5,20 @@
 - allow registered users to download uploaded files
 - log registred users downloads
 ## Installation for prod
+Build the Docker
+```bash
+./build-docker.sh
+```
+
+Edit settings-prod.py to setup your SMTP conf (or remove it)
+
+Run the Docker
+```bash
+./run-docker.sh
+docker exec -it datadrop ./manage.py migrate
+docker exec -it datadrop ./manage.py collectstatic
+docker exec -it datadrop ./manage.py createsuperuser
+```
 
 ## Installation for dev
 ```bash
