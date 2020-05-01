@@ -19,7 +19,7 @@ def protected_serve_log(request, upload_pk, document_root=None, show_indexes=Fal
     """
     upload = get_object_or_404(Upload, pk=upload_pk)
     download = Download(downloader=request.user, upload=upload)
-    x = download.save()
+    download.save()
     return serve(request, upload.file.name, document_root, show_indexes)
 
 

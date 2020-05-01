@@ -6,16 +6,19 @@ from app.models import Upload, Download
 
 
 class UploadCreate(CreateView):
+    # pylint: disable=missing-class-docstring
     model = Upload
     fields = ['company', 'file', ]
 
 
 class UploadDelete(DeleteView):
+    # pylint: disable=missing-class-docstring
     model = Upload
     success_url = '/uploads'
 
 
 class UploadList(ListView):
+    # pylint: disable=missing-class-docstring
     model = Upload
 
     def get_queryset(self):
@@ -23,6 +26,7 @@ class UploadList(ListView):
 
 
 class DownloadList(ListView):
+    # pylint: disable=missing-class-docstring
     model = Download
 
     def get_queryset(self):
