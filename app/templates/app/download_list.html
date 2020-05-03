@@ -8,10 +8,10 @@
                 <h2>Downloads information about {{ upload.file.name }} {% if upload.company %} from {{ upload.company }}{% endif %}</h2>
                 <div style="margin: 50px; padding:10px">
                     <table class="table">
-                    <tr>
-                        <th>Download date</th>
-                        <th>Downloader</th>
-                    </tr>
+                        <tr>
+                            <th>Download date</th>
+                            <th>Downloader</th>
+                        </tr>
                         {% for download in object_list %}
                             <tr>
                                 <td>{{ download.created_at}}</td>

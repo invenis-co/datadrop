@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
     {% bootstrap_css %}
     {% bootstrap_javascript jquery='full' %}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -10,7 +11,7 @@
     <meta name="robots" content="noindex, nofollow">
     <link rel="shortcut icon" type="image/png" href="{% static 'app/images/favicon.ico' %}"/>
     <title>{% block title %}Data Drop{% endblock %}</title>
-    <style type="text/css" media="screen">
+    <style>
         a:hover {
             color: #aaa;
             text-decoration: none;
