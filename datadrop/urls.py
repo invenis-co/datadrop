@@ -24,7 +24,7 @@ def protected_serve_log(request, upload_pk, document_root=None, show_indexes=Fal
 
 
 urlpatterns = [
-    path(r'', views.UploadCreate.as_view(), name='index'),
+    path(r'', views.FileFieldView.as_view(), name='index'),
     path(r'uploads', views.UploadList.as_view(), name='uploads'),
     path(r'delete-upload/<int:pk>/', views.UploadDelete.as_view(), name='delete-upload'),
     path(r'download/<int:upload_pk>/', protected_serve_log, {'document_root': settings.MEDIA_ROOT}, name='download'),
