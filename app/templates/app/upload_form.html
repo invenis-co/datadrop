@@ -4,7 +4,22 @@
 {% block content %}
     <div class="container-sm">
         <div class="col-md-4 offset-md-4">
-            <div style="border: solid 1px #ccc; border-radius: 10px ;margin: 50px; padding:10px">
+            <div class="text-center">
+                {% if link.first or link.last_name %}
+                    Hello {{ link.first_name }} {{ link.last_name }}
+                    {% if link.company %}
+                        from {{ link.company }}
+                    {% endif %}
+                {% else %}
+                    {% if link.company %}
+                        {{ link.company }}
+                    {% endif %}
+                {% endif %}
+            </div>
+            <div class="text-center">
+                Please select one or more files to upload
+            </div>
+            <div class="text-center form-box" >
                 <form method="post" enctype="multipart/form-data" >
                     {% csrf_token %}
                     {% bootstrap_form form %}
@@ -12,7 +27,6 @@
                         <input class="btn primary-bg-color" type="submit" value="Upload" />
                         <br/>
                         <i class="fa fa-lock primary-color" style="font-size: xx-large"></i>
-
                     </div>
                 </form>
             </div>

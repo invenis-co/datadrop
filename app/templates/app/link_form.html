@@ -1,0 +1,26 @@
+{% extends "app/base.html" %}
+{% load bootstrap4 %}
+
+{% block content %}
+    <div class="container-sm">
+        <div class="col-md-4 offset-md-4">
+            <div class="form-box">
+                <form method="post" enctype="multipart/form-data" >
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                    <div class="text-center">
+                        <input class="btn primary-bg-color" type="submit" value="{% if object.uuid %}Save{% else %}Generate{% endif %}" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% if object.uuid %}
+        <div class="container-sm">
+            <div class="col-md-8 offset-md-2 text-center">
+                <h2>URL for uploader</h2>
+                <a href="{{ url }}">{{ url }}</a>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

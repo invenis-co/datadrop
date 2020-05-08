@@ -26,6 +26,12 @@
             background-color: #6ec1e4;
             color: #fff;
         }
+        .form-box {
+            border: solid 1px #ccc;
+            border-radius: 10px;
+            margin: 50px;
+            padding:10px;
+        }
     </style>
 
     {% block headers %}{% endblock %}
@@ -44,9 +50,9 @@
 
         <ul class="nav navbar-nav navbar-right">
             {% if user.is_authenticated %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'uploads' %}"> <i class="fa fa-list primary-color"></i> Uploads</a>
-                </li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'link' %}"> <i class="fa fa-link primary-color"></i> Create link</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'links' %}"> <i class="fa fa-list primary-color"></i> Links</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'uploads' %}"> <i class="fa fa-list primary-color"></i> Uploads</a></li>
             {% endif %}
             {% if user.is_staff or user.is_superuser %}
                 <li class="nav-item">

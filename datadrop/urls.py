@@ -24,9 +24,16 @@ def protected_serve_log(request, upload_pk, document_root=None, show_indexes=Fal
 
 
 urlpatterns = [
-    path(r'', views.FileFieldView.as_view(), name='index'),
+    path(r'', views.index, name='index'),
+    path(r'link', views.LinkCreate.as_view(), name='link'),
+    path(r'link/<int:pk>/', views.LinkUpdate.as_view(), name='update-link'),
+    path(r'links', views.LinkList.as_view(), name='links'),
+    path(r'delete-link/<int:pk>/', views.LinkDelete.as_view(), name='delete-link'),
+
+    path(r'upload/<str:uuid>/', views.FileFieldView.as_view(), name='upload'),
     path(r'uploads', views.UploadList.as_view(), name='uploads'),
     path(r'delete-upload/<int:pk>/', views.UploadDelete.as_view(), name='delete-upload'),
+
     path(r'download/<int:upload_pk>/', protected_serve_log, {'document_root': settings.MEDIA_ROOT}, name='download'),
     path(r'downloads/<int:upload_pk>/', views.DownloadList.as_view(), name='downloads'),
     path(r'thanks', TemplateView.as_view(template_name='app/thanks.html'), name='thanks'),

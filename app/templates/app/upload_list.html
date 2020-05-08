@@ -10,7 +10,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Creation date</th>
-                            <th>Company</th>
+                            <th>Link</th>
                             <th>File Name</th>
                             <th>Downloads count</th>
                             <th>Delete</th>
@@ -19,7 +19,7 @@
                             <tr>
                                 <td>{{ upload.pk}}</td>
                                 <td>{{ upload.created_at}}</td>
-                                <td>{{ upload.company }}</td>
+                                <td><a href="{% url 'update-link' upload.link.pk %}">{{ upload.link.pk }}</a></td>
                                 <td><a href="{% url 'download' upload.pk %}">{{ upload.file.name }}</a></td>
                                 <td><a href="{% url 'downloads' upload.pk %}" class="badge badge-info">{{ upload.download_count }}</a></td>
                                 <td><a href="{% url 'delete-upload' upload.pk %}"><i class="fa fa-trash" style="color: #dd4444"></i></a></td>
