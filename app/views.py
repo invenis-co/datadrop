@@ -1,6 +1,7 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Count
 from django.shortcuts import get_object_or_404
-from django.views.generic import CreateView, ListView, DeleteView, FormView
+from django.views.generic import ListView, DeleteView, FormView
 
 from app.forms import UploadForm
 from app.models import Upload, Download
@@ -28,19 +29,13 @@ class FileFieldView(FormView):
         return self.form_invalid(form)
 
 
-class UploadCreate(CreateView):
-    # pylint: disable=missing-class-docstring
-    model = Upload
-    fields = ['company', 'file', ]
-
-
-class UploadDelete(DeleteView):
+class UploadDelete(LoginRequiredMixin, DeleteView):
     # pylint: disable=missing-class-docstring
     model = Upload
     success_url = '/uploads'
 
 
-class UploadList(ListView):
+class UploadList(LoginRequiredMixin, ListView):
     # pylint: disable=missing-class-docstring
     model = Upload
 
@@ -48,7 +43,7 @@ class UploadList(ListView):
         return Upload.objects.all().annotate(download_count=Count('download')).order_by('-created_at')
 
 
-class DownloadList(ListView):
+class DownloadList(LoginRequiredMixin, ListView):
     # pylint: disable=missing-class-docstring
     model = Download
 
