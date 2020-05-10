@@ -62,6 +62,24 @@ class Link(models.Model):
             self.uuid = uuid.uuid4()
         super().save(force_insert, force_update, using, update_fields)
 
+    @property
+    def nice_name(self):
+        """Use all filled information to generate a "nice name", else fallback on UUID"""
+        texts = []
+        name = False
+        if self.first_name:
+            name = True
+            texts += [self.first_name]
+        if self.last_name:
+            name = True
+            texts += [self.last_name]
+        if self.email:
+            texts += [f'({self.email})' if name else self.email]
+            name = True
+        if self.company:
+            texts += [f'from {self.company}' if name else self.company]
+        return ' '.join(texts) if texts else self.uuid
+
 
 class Upload(models.Model):
     """ Model for uploaded file for non-logged used """

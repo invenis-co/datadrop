@@ -1,7 +1,9 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Count
 from django.http import HttpResponseRedirect
+from django.http.request import split_domain_port
 from django.shortcuts import get_object_or_404, render
+from django.template.loader import render_to_string
 from django.urls import reverse
 from django.views.generic import ListView, DeleteView, FormView, CreateView, UpdateView
 
@@ -37,6 +39,7 @@ class LinkUpdate(LoginRequiredMixin, UpdateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['url'] = self.request.build_absolute_uri(reverse('upload', kwargs={'uuid': self.object.uuid}))
+        context['upload_count'] = Upload.objects.filter(link=self.object).count
         return context
 
 
@@ -82,6 +85,21 @@ class FileFieldView(FormView):
             for file in files:
                 upload = Upload(file=file, link=self.link)
                 upload.save()
+            domain, _ = split_domain_port(self.request.get_host())
+
+            context = {
+                'filenames': {file.name for file in files},
+                'link_url': request.build_absolute_uri(reverse('update-link', kwargs={'pk': self.link.pk})),
+                'link_name': self.link.nice_name,
+            }
+            link_creator = self.link.created_by
+            link_creator.email_user(
+                subject='Data has arrived',
+                message=f'Please go to {context["link_url"]}',
+                html_message=render_to_string(template_name='app/mail_notification.html', context=context),
+                from_email=f'datadropbot@{domain}',
+                fail_silently=True,
+            )
             return self.form_valid(form)
         return self.form_invalid(form)
 
@@ -97,7 +115,11 @@ class UploadList(LoginRequiredMixin, ListView):
     model = Upload
 
     def get_queryset(self):
-        return Upload.objects.all().annotate(download_count=Count('download')).order_by('-created_at')
+        if 'pk' in self.kwargs:
+            uploads = Upload.objects.filter(link__pk=self.kwargs['pk'])
+        else:
+            uploads = Upload.objects.all()
+        return uploads.annotate(download_count=Count('download')).order_by('-created_at')
 
 
 class DownloadList(LoginRequiredMixin, ListView):

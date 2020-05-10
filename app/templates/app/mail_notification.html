@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+ Dear user,<br/>
+<br/>
+ Link <a href="{{ link_url }}">{{ link_name }}</a> has been used.<br/>
+ <br/>
+ Following content has been received:
+ <ul>
+     {% for filename in filenames %}
+         <li>{{ filename }}</li>
+     {% endfor %}
+ </ul>
+Please go to link and disable it if there are no more file to transfer. You can download content from there.<br/>
+<br/>
+Regards,<br/>
+DataDrop
+</body>
+</html>
