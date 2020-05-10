@@ -26,7 +26,7 @@
                                 <td>{{ link.first_name }}</td>
                                 <td>{{ link.last_name }}</td>
                                 <td>{{ link.enabled }}</td>
-                                <td><span class="badge badge-info">{{ link.upload_count }}</span></td>
+                                <td><a href="{% url 'uploads' link.pk %}"><span class="badge badge-info">{{ link.upload_count }}</span></a></td>
                                 <td><a href="{% url 'update-link' link.pk %}"><i class="fa fa-edit"></i></a></td>
                             </tr>
                         {% endfor %}

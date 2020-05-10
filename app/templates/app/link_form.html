@@ -5,7 +5,7 @@
     <div class="container-sm">
         <div class="col-md-4 offset-md-4">
             <div class="form-box">
-                <form method="post" enctype="multipart/form-data" >
+                <form method="post">
                     {% csrf_token %}
                     {% bootstrap_form form %}
                     <div class="text-center">
@@ -15,12 +15,16 @@
             </div>
         </div>
     </div>
-    {% if object.uuid %}
-        <div class="container-sm">
-            <div class="col-md-8 offset-md-2 text-center">
-                <h2>URL for uploader</h2>
+    <div class="container-sm">
+        <div class="col-md-8 offset-md-2 text-center">
+
+            {%  if upload_count %}
+                <h4>Already <a href="{% url 'uploads' object.pk%} ">{{ upload_count }} upload{{ upload_count|pluralize }}</a></h4>
+            {%  endif %}
+            {% if object.uuid %}
+                <h4>URL for uploader</h4>
                 <a href="{{ url }}">{{ url }}</a>
-            </div>
-        </div>
-    {% endif %}
+                </div>
+                </div>
+            {% endif %}
 {% endblock %}

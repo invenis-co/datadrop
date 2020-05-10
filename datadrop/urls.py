@@ -32,6 +32,7 @@ urlpatterns = [
 
     path(r'upload/<str:uuid>/', views.FileFieldView.as_view(), name='upload'),
     path(r'uploads', views.UploadList.as_view(), name='uploads'),
+    path(r'uploads/<int:pk>', views.UploadList.as_view(), name='uploads'),
     path(r'delete-upload/<int:pk>/', views.UploadDelete.as_view(), name='delete-upload'),
 
     path(r'download/<int:upload_pk>/', protected_serve_log, {'document_root': settings.MEDIA_ROOT}, name='download'),
