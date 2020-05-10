@@ -2,7 +2,12 @@ from .settings import *
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+# Security
+ALLOWED_HOSTS = ['localhost', 'YOUR_SITE']
+CSRF_TRUSTED_ORIGINS = ['YOUR_SITE']
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+USE_X_FORWARDED_HOST = True
+SECRET_KEY = 'ADD YOUR PRODUCTION SECRET KEY HERE'
 
 # Database
 DATABASES['default']['NAME'] = os.path.join('/data', 'db.sqlite3')
