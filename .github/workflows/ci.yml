@@ -37,6 +37,14 @@ jobs:
         poetry env info
         poetry install
 
+    - name: dependencies
+      run : |
+        cp requirements.txt requirements-new.txt
+        sha256sum requirements-new.txt > sum.txt
+        poetry export -f requirements.txt > requirements-new.txt
+        echo "If this fails, requirements does not conform with poetry.lock"
+        sha256sum -c sum.txt
+         
 
     - name: migration
       run: poetry run ./manage.py makemigrations -v 3 --check --dry-run
