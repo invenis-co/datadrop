@@ -4,8 +4,16 @@ Easily get files from other people in a secure way.
 ## Features
 - allow external users to upload files without account (just send them a unique link)
 - get notified by email when the upload is done
-- allow only registered users to download uploaded files
-- log registered users downloads
+- only registered users can download uploaded files
+- log downloads
+
+## How to use it
+### How to receive file(s)
+1. Go to Link Tab, (optionally) fill fields and generate the link
+2. Send the generate URL to the sender
+3. Receive an email when the download is complete
+4. Download received file(s)
+5. (Optional) disable the link
 
 ## Installation for production
 ### Build the Docker
