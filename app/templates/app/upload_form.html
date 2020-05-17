@@ -20,16 +20,65 @@
                 Please select one or more files to upload
             </div>
             <div class="text-center form-box" >
-                <form method="post" enctype="multipart/form-data" >
+                <form method="post" enctype="multipart/form-data"{% comment %} onsubmit="showProgress();"{% endcomment %}>
                     {% csrf_token %}
-                    {% bootstrap_form form %}
+                    <input type="file" name="files" multiple="" class="form-control-file" title="" required=""
+                           id="id_files" onchange="uploadFile();">
                     <div class="text-center">
-                        <input class="btn primary-bg-color" type="submit" value="Upload" />
-                        <br/>
                         <i class="fa fa-lock primary-color" style="font-size: xx-large"></i>
                     </div>
+
+                    <progress id="progressBar" value="0" max="100" style="width:300px;"></progress>
+                    <div id="status"></div>
                 </form>
+                <div class="progress" id="progress" style="display: none">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-info"
+                         role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
+                         style="width: 100%">Uploading</div>
+                </div>
             </div>
         </div>
     </div>
+    <script>
+        function _(el) {
+            return document.getElementById(el);
+        }
+        function uploadFile() {
+            const files = _("id_files").files;
+            const csrf = document.getElementsByName("csrfmiddlewaretoken")[0].value;
+
+            const formdata = new FormData();
+            formdata.append("csrfmiddlewaretoken", csrf);
+            for (let i = 0; i < files.length; i++) {
+                formdata.append("files", files[i]);
+            }
+            const ajax = new XMLHttpRequest();
+            ajax.upload.addEventListener("progress", progressHandler, false);
+            ajax.addEventListener("load", completeHandler, false);
+            ajax.addEventListener("error", errorHandler, false);
+            ajax.addEventListener("abort", abortHandler, false);
+            ajax.open("POST", "?");
+            ajax.send(formdata);
+        }
+
+        function progressHandler(event) {
+            const percent = (event.loaded / event.total) * 100;
+            _("progressBar").value = Math.round(percent);
+            _("status").innerHTML = Math.round(percent) + "% uploaded... please wait";
+        }
+
+        function completeHandler(event) {
+            _("progressBar").value = 0;
+            window.location.href = "{% url 'thanks' %}";
+        }
+
+        function errorHandler(event) {
+            _("status").innerHTML = "Upload Failed";
+        }
+
+        function abortHandler(event) {
+            _("status").innerHTML = "Upload Aborted";
+        }
+
+    </script>
 {% endblock %}
