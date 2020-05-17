@@ -38,6 +38,7 @@ urlpatterns = [
     path(r'download/<int:upload_pk>/', protected_serve_log, {'document_root': settings.MEDIA_ROOT}, name='download'),
     path(r'downloads/<int:upload_pk>/', views.DownloadList.as_view(), name='downloads'),
     path(r'thanks', TemplateView.as_view(template_name='app/thanks.html'), name='thanks'),
+    path(r'link-disabled', TemplateView.as_view(template_name='app/link-disabled.html'), name='link-disabled'),
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
     path(r'%s<int:pk>' % settings.MEDIA_URL[1:], protected_serve_log, {'document_root': settings.MEDIA_ROOT}),

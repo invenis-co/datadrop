@@ -71,6 +71,8 @@ class FileFieldView(FormView):
     def setup(self, request, *args, **kwargs):
         super().setup(request, *args, **kwargs)
         self.link = get_object_or_404(Link, uuid=self.kwargs['uuid'])
+        if not self.link.enabled:
+            self.template_name = 'app/link-disabled.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -78,6 +80,8 @@ class FileFieldView(FormView):
         return context
 
     def post(self, request, *args, **kwargs):
+        if not self.link.enabled:  # A user can still have the form opened even if the link is disabled
+            return HttpResponseRedirect(reverse('link-disabled'))
         form_class = self.get_form_class()
         form = self.get_form(form_class)
         files = request.FILES.getlist('files')

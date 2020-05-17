@@ -54,7 +54,10 @@
             }
             const ajax = new XMLHttpRequest();
             ajax.upload.addEventListener("progress", progressHandler, false);
-            ajax.addEventListener("load", completeHandler, false);
+            ajax.onload = function(){
+                _("progressBar").value = 0;
+                window.location.href = ajax.responseURL;
+            };
             ajax.addEventListener("error", errorHandler, false);
             ajax.addEventListener("abort", abortHandler, false);
             ajax.open("POST", "?");
@@ -65,11 +68,6 @@
             const percent = (event.loaded / event.total) * 100;
             _("progressBar").value = Math.round(percent);
             _("status").innerHTML = Math.round(percent) + "% uploaded... please wait";
-        }
-
-        function completeHandler(event) {
-            _("progressBar").value = 0;
-            window.location.href = "{% url 'thanks' %}";
         }
 
         function errorHandler(event) {
