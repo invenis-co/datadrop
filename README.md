@@ -21,10 +21,10 @@ Easily get files from other people in a secure way.
 ./build-docker.sh
 ```
 
-###Customize your settings 
+### Customize your settings 
 Edit *settings-prod.py* to setup HOSTNAME, SECRET_KEY, your SMTP, etc.
 
-###Run the Docker
+### Run the Docker
 ```bash
 ./run-docker.sh
 docker exec -it datadrop ./manage.py migrate
@@ -35,7 +35,7 @@ docker exec -it datadrop ./manage.py createsuperuser
 ### Get a certificate
 The above documentation is done with a certbot / letsencrypt certificate generated
 
-###Configure nginx
+### Configure nginx
 Add `client_max_body_size 10G;` to the *http* part of `/etc/nginx/nginx.conf` to enable big file upload
 
 Create a site-available like this, replace YOUR_HOSTNAME by yours and enable it
