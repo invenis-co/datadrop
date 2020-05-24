@@ -1,4 +1,6 @@
 # DataDrop
+![CI](https://github.com/invenis-co/datadrop/workflows/CI/badge.svg)
+
 Easily get files from other people in a secure way.
 
 ## Features
