@@ -30,6 +30,7 @@ Edit *settings-prod.py* to setup HOSTNAME, SECRET_KEY, your SMTP, etc.
 ```bash
 ./run-docker.sh
 docker exec -it datadrop ./manage.py migrate
+poetry run ./manage.py compilemessages --locale=fr
 docker exec -it datadrop ./manage.py collectstatic
 docker exec -it datadrop ./manage.py createsuperuser
 ```
@@ -85,6 +86,7 @@ Restart nginx and enjoy :-D
 ```bash
 poetry install
 poetry run ./manage.py migrate
+poetry run ./manage.py compilemessages --locale=fr
 poetry run ./manage.py createsuperuser
 poetry run ./manage.py runserver
 ```

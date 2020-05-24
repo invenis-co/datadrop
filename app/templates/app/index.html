@@ -1,11 +1,11 @@
 {% extends "app/base.html" %}
-{% load bootstrap4 %}
+{% load bootstrap4 i18n %}
 
 {% block content %}
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
             <h1 class="display-4">Data Drop</h1>
-            <p class="lead">A secure solution to transfer your data!</p>
+            <p class="lead">{% trans "A secure solution to transfer your data!" %}</p>
         </div>
     </div>
 {% endblock %}

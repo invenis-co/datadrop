@@ -1,0 +1,281 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-05-24 22:37+0000\n"
+"PO-Revision-Date: 2020-05-24 23:49+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3.1\n"
+
+#: app/models.py:23
+msgid "email address"
+msgstr "adresse email"
+
+#: app/models.py:24 app/models.py:30 app/models.py:36 app/models.py:42
+msgid "Optional"
+msgstr "Optionnel"
+
+#: app/models.py:29
+msgid "company"
+msgstr "société"
+
+#: app/models.py:35
+msgid "last name"
+msgstr "nom"
+
+#: app/models.py:41
+msgid "first name"
+msgstr "prénom"
+
+#: app/models.py:47 app/models.py:97 app/models.py:129
+msgid "Date in format ISO8601. Example: 2020-03-03T18:31:01.915000Z."
+msgstr "Date au format ISO8601. Exemple: 2020-03-03T18:31:01.915000Z."
+
+#: app/models.py:53
+msgid "User that created the link"
+msgstr "Utilisateur ayant créé le lien"
+
+#: app/models.py:56
+msgid "Link enabled"
+msgstr "Lien actif"
+
+#: app/models.py:80
+#, python-format
+msgid "from %s"
+msgstr "de %s"
+
+#: app/models.py:89
+msgid "Link given for this upload"
+msgstr "Lien donné pour cet upload"
+
+#: app/models.py:93
+msgid "Select one or more files to upload"
+msgstr "Veuillez selectionner un ou plusieurs fichiers à uploader"
+
+#: app/models.py:119
+msgid "User that download the file"
+msgstr "Utilisateur qui a téléchargé le fichier"
+
+#: app/models.py:125
+msgid "Uploaded file"
+msgstr "Fichier uploadé"
+
+#: app/templates/app/base.html:54
+msgid "Create link"
+msgstr "Créer un lien"
+
+#: app/templates/app/base.html:55
+msgid "Links"
+msgstr "Liens"
+
+#: app/templates/app/base.html:56 app/templates/app/link_list.html:18
+msgid "Uploads"
+msgstr "Fichier uploadé"
+
+#: app/templates/app/base.html:60
+msgid "Admin"
+msgstr "Admin"
+
+#: app/templates/app/base.html:64
+msgid "Logout"
+msgstr "Déconnexion"
+
+#: app/templates/app/base.html:66
+msgid "Login"
+msgstr "Connexion"
+
+#: app/templates/app/download_list.html:8
+#, python-format
+msgid "Downloads information about %(upload.file.name)s"
+msgstr "Information des téléchargements de %(upload.file.name)s"
+
+#: app/templates/app/download_list.html:8
+#, python-format
+msgid "from %(upload.company)s"
+msgstr "de %(upload.company)s"
+
+#: app/templates/app/download_list.html:12
+msgid "Download date"
+msgstr "Date de téléchargement"
+
+#: app/templates/app/download_list.html:13
+msgid "Downloader"
+msgstr "Téléchargeur"
+
+#: app/templates/app/index.html:8
+msgid "A secure solution to transfer your data!"
+msgstr "Une solution sécurisée pour transférer vos données !"
+
+#: app/templates/app/link-disabled.html:7
+msgid "Sorry"
+msgstr "Désolé"
+
+#: app/templates/app/link-disabled.html:8
+msgid "This link has been disabled. Ask us for a new one."
+msgstr "Ce lien a été désactivé. Demandez-nous un nouveau."
+
+#: app/templates/app/link_confirm_delete.html:9
+#, python-format
+msgid "Are you sure you want to delete \"%(object.uuid)s\"?"
+msgstr "Êtes vous sûr de vouloir effacer \"%(object.uuid)s\"?"
+
+#: app/templates/app/link_form.html:12
+msgid "Save"
+msgstr "Sauvegarder"
+
+#: app/templates/app/link_form.html:12
+msgid "Generate"
+msgstr "Générer"
+
+#: app/templates/app/link_form.html:22
+msgid "Already"
+msgstr "Déjà"
+
+#: app/templates/app/link_form.html:22
+msgid "upload"
+msgstr "upload"
+
+#: app/templates/app/link_form.html:25
+msgid "URL for uploader"
+msgstr "URL pour les uploaders"
+
+#: app/templates/app/link_list.html:8
+msgid "Links information"
+msgstr "Détails des liens"
+
+#: app/templates/app/link_list.html:12 app/templates/app/upload_list.html:12
+msgid "Creation date"
+msgstr "Date de création"
+
+#: app/templates/app/link_list.html:13
+msgid "Email"
+msgstr "Email"
+
+#: app/templates/app/link_list.html:14
+msgid "Company"
+msgstr "Société"
+
+#: app/templates/app/link_list.html:15
+msgid "First Name"
+msgstr "Prénom"
+
+#: app/templates/app/link_list.html:16
+msgid "Last Name"
+msgstr "Nom"
+
+#: app/templates/app/link_list.html:17
+msgid "Enabled"
+msgstr "Actif"
+
+#: app/templates/app/link_list.html:19
+msgid "Edit"
+msgstr "Éditer"
+
+#: app/templates/app/mail_notification.html:9
+#, python-format
+msgid ""
+"Dear user,<br/>\n"
+"<br/>\n"
+"Link <a href=\"%(link_url)s\">%(link_name)s</a> has been used.<br/>\n"
+"<br/>\n"
+"Following content has been received:\n"
+msgstr ""
+"Cher utilisateur,<br/>\n"
+"<br/>\n"
+"Le lien <a href=\"%(link_url)s\">%(link_name)s</a> a été utilisé.<br/>\n"
+"<br/>\n"
+"Le contenu suivant a été reçu :\n"
+
+#: app/templates/app/mail_notification.html:20
+msgid ""
+"\n"
+"Please go to link and disable it if there are no more file to transfer. You "
+"can download content from there.<br/>\n"
+"<br/>\n"
+"Regards,<br/>\n"
+"DataDrop\n"
+msgstr ""
+"\n"
+"Vous pouvez aller sur le lien et le rendre inactif s'il n'y a plus de "
+"fichier à recevoir. Vous pouvez télécharger le contenu depuis là-bas<br/>\n"
+"<br/>\n"
+"Cordialement,<br/>\n"
+"DataDrop\n"
+
+#: app/templates/app/thanks.html:7
+msgid "Thanks"
+msgstr "Merci"
+
+#: app/templates/app/thanks.html:8
+msgid "See you soon"
+msgstr "À bientôt"
+
+#: app/templates/app/upload_confirm_delete.html:9
+#, python-format
+msgid "Are you sure you want to delete \"%(object.file.name)s\"?"
+msgstr "Ëtes vous sûr de vouloir effacer \"%(object.file.name)s\"?"
+
+#: app/templates/app/upload_confirm_delete.html:10
+msgid "Confirm"
+msgstr "Confirmer"
+
+#: app/templates/app/upload_form.html:9
+#, python-format
+msgid "Hello %(link.first_name)s %(link.last_name)s"
+msgstr "Bonjour %(link.first_name)s %(link.last_name)s"
+
+#: app/templates/app/upload_form.html:11
+#, python-format
+msgid "from %(link.company)s"
+msgstr "de  %(link.company)s"
+
+#: app/templates/app/upload_form.html:20
+msgid "Please select one or more files to upload"
+msgstr "Veuillez selectionner un ou plusieurs fichiers à uploader"
+
+#: app/templates/app/upload_form.html:37
+msgid "Uploading"
+msgstr "Envoie en cours"
+
+#: app/templates/app/upload_list.html:11
+msgid "ID"
+msgstr "ID"
+
+#: app/templates/app/upload_list.html:13
+msgid "Link ID"
+msgstr "ID du lien"
+
+#: app/templates/app/upload_list.html:14
+msgid "File Name"
+msgstr "Nom du fichier"
+
+#: app/templates/app/upload_list.html:15
+msgid "Size"
+msgstr "Taille"
+
+#: app/templates/app/upload_list.html:16
+msgid "Downloads"
+msgstr "Téléchargements"
+
+#: app/templates/app/upload_list.html:17
+msgid "Delete"
+msgstr "Effacer"
+
+#: app/views.py:101
+msgid "Data has arrived"
+msgstr "Fichier arrivé"
+
+#: app/views.py:102
+#, python-format
+msgid "Please go to %s"
+msgstr "Vous pouvez aller sur %s"

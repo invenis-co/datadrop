@@ -1,11 +1,11 @@
 {% extends "app/base.html" %}
-{% load bootstrap4 %}
+{% load bootstrap4 i18n %}
 
 {% block content %}
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
-            <h1 class="display-4">Thanks</h1>
-            <p class="lead">See you soon</p>
+            <h1 class="display-4">{% trans "Thanks" %}</h1>
+            <p class="lead">{% trans "See you soon" %}</p>
         </div>
     </div>
 {% endblock %}

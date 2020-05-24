@@ -1,5 +1,5 @@
 {% extends "app/base.html" %}
-{% load bootstrap4 static app_extras %}
+{% load bootstrap4 static app_extras i18n %}
 
 {% block content %}
     <div class="text-center">
@@ -8,13 +8,13 @@
                 <div style="margin: 50px; padding:10px">
                     <table class="table">
                         <tr>
-                            <th>ID</th>
-                            <th>Creation date</th>
-                            <th>Link ID</th>
-                            <th>File Name</th>
-                            <th>Size</th>
-                            <th>Downloads count</th>
-                            <th>Delete</th>
+                            <th>{% trans "ID" %}</th>
+                            <th>{% trans "Creation date" %}</th>
+                            <th>{% trans "Link ID" %}</th>
+                            <th>{% trans "File Name" %}</th>
+                            <th>{% trans "Size" %}</th>
+                            <th>{% trans "Downloads" %}</th>
+                            <th>{% trans "Delete" %}</th>
                         </tr>
                         {% for upload in object_list %}
                             <tr>
