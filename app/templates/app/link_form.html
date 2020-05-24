@@ -1,5 +1,5 @@
 {% extends "app/base.html" %}
-{% load bootstrap4 %}
+{% load bootstrap4 i18n%}
 
 {% block content %}
     <div class="container-sm">
@@ -9,7 +9,7 @@
                     {% csrf_token %}
                     {% bootstrap_form form %}
                     <div class="text-center">
-                        <input class="btn primary-bg-color" type="submit" value="{% if object.uuid %}Save{% else %}Generate{% endif %}" />
+                        <input class="btn primary-bg-color" type="submit" value="{% if object.uuid %}{% trans "Save" %}{% else %}{% trans "Generate" %}{% endif %}" />
                     </div>
                 </form>
             </div>
@@ -19,10 +19,10 @@
         <div class="col-md-8 offset-md-2 text-center">
 
             {%  if upload_count %}
-                <h4>Already <a href="{% url 'uploads' object.pk%} ">{{ upload_count }} upload{{ upload_count|pluralize }}</a></h4>
+                <h4>{% trans "Already"%} <a href="{% url 'uploads' object.pk%} ">{{ upload_count }} {% trans "upload" %}{{ upload_count|pluralize }}</a></h4>
             {%  endif %}
             {% if object.uuid %}
-                <h4>URL for uploader</h4>
+                <h4>{% trans "URL for uploader" %}</h4>
                 <a href="{{ url }}">{{ url }}</a>
                 </div>
                 </div>

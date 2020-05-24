@@ -1,16 +1,16 @@
 {% extends "app/base.html" %}
-{% load bootstrap4 static %}
+{% load bootstrap4 static i18n %}
 
 {% block content %}
     <div class="text-center">
         <div class="container-sm">
             <div class="col-md-8 offset-md-2">
-                <h2>Downloads information about {{ upload.file.name }} {% if upload.company %} from {{ upload.company }}{% endif %}</h2>
+                <h2>{% blocktrans %}Downloads information about {{ upload.file.name }}{% endblocktrans %} {% if upload.company %} {% blocktrans %}from {{ upload.company }}{% endblocktrans %}{% endif %}</h2>
                 <div style="margin: 50px; padding:10px">
                     <table class="table">
                         <tr>
-                            <th>Download date</th>
-                            <th>Downloader</th>
+                            <th>{% trans "Download date" %}</th>
+                            <th>{% trans "Downloader" %}</th>
                         </tr>
                         {% for download in object_list %}
                             <tr>

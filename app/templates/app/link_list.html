@@ -1,22 +1,22 @@
 {% extends "app/base.html" %}
-{% load bootstrap4 static %}
+{% load bootstrap4 static i18n %}
 
 {% block content %}
     <div class="text-center">
         <div class="container-sm">
             <div class="col-md-10 offset-md-1">
-                <h2>Links information</h2>
+                <h2>{% trans "Links information" %}</h2>
                 <div style="margin: 50px; padding:10px">
                     <table class="table">
                         <tr>
-                            <th>Creation date</th>
-                            <th>Email</th>
-                            <th>Company</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Enabled</th>
-                            <th>Uploads</th>
-                            <th>Edit</th>
+                            <th>{% trans "Creation date" %}</th>
+                            <th>{% trans "Email" %}</th>
+                            <th>{% trans "Company" %}</th>
+                            <th>{% trans "First Name" %}</th>
+                            <th>{% trans "Last Name" %}</th>
+                            <th>{% trans "Enabled" %}</th>
+                            <th>{% trans "Uploads" %}</th>
+                            <th>{% trans "Edit" %}</th>
                         </tr>
                         {% for link in object_list %}
                             <tr>

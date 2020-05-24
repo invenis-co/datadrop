@@ -98,8 +98,8 @@ class FileFieldView(FormView):
             }
             link_creator = self.link.created_by
             link_creator.email_user(
-                subject='Data has arrived',
-                message=f'Please go to {context["link_url"]}',
+                subject=_('Data has arrived'),
+                message=_('Please go to %s') % context["link_url"],
                 html_message=render_to_string(template_name='app/mail_notification.html', context=context),
                 from_email=f'datadropbot@{domain}',
                 fail_silently=True,
