@@ -2,10 +2,9 @@ import os
 import uuid
 from datetime import datetime, timezone
 
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.dispatch import receiver
-
 
 def get_utc_now() -> datetime:
     """Return the current UTC time when called."""
@@ -47,7 +46,7 @@ class Link(models.Model):
         help_text='Date in format ISO8601. Example: 2020-03-03T18:31:01.915000Z.'
     )
     created_by = models.ForeignKey(
-        User,
+        get_user_model(),
         on_delete=models.SET_NULL,
         null=True,
         help_text='User that created the link'
@@ -113,7 +112,7 @@ def auto_delete_file_on_delete(sender, instance, **kwargs):
 class Download(models.Model):
     """ Model to log downloads of uploaded files """
     downloader = models.ForeignKey(
-        User,
+        get_user_model(),
         on_delete=models.SET_NULL,
         null=True,
         help_text='User that download the file'
