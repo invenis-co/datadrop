@@ -19,7 +19,7 @@
             <div class="text-center">
                 Please select one or more files to upload
             </div>
-            <div class="text-center form-box" >
+            <div class="text-center form-box some-shadow" >
                 <form method="post" enctype="multipart/form-data"{% comment %} onsubmit="showProgress();"{% endcomment %}>
                     {% csrf_token %}
                     <input type="file" name="files" multiple="" class="form-control-file" title="" required=""
@@ -28,7 +28,7 @@
                         <i class="fa fa-lock primary-color" style="font-size: xx-large"></i>
                     </div>
 
-                    <progress id="progressBar" value="0" max="100" style="width:300px;"></progress>
+                    <progress id="progressBar" value="0" max="100" style="width:100%;"></progress>
                     <div id="status"></div>
                 </form>
                 <div class="progress" id="progress" style="display: none">

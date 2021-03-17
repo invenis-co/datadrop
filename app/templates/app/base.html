@@ -11,6 +11,7 @@
     <meta name="robots" content="noindex, nofollow">
     <link rel="shortcut icon" type="image/png" href="{% static 'app/images/favicon.ico' %}"/>
     <title>{% block title %}Data Drop{% endblock %}</title>
+
     <style>
         a:hover {
             color: #aaa;
@@ -22,8 +23,22 @@
         .primary-color{
             color: #6ec1e4;
         }
+
+        .danger-color{
+            color: #ff999b;
+        }
+
+        .ok-color{
+            color: #b2ffad;
+        }
+
         .primary-bg-color{
             background-color: #6ec1e4;
+            color: #fff;
+        }
+
+        .danger-bg-color{
+            background-color: #ff999b;
             color: #fff;
         }
         .form-box {
@@ -32,14 +47,133 @@
             margin: 50px;
             padding:10px;
         }
+        .some-shadow {
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+        }
+
+        .navbar-icon-top .navbar-nav .nav-link > .fa {
+            position: relative;
+            width: 36px;
+            font-size: 24px;
+        }
+
+        .navbar-icon-top .navbar-nav .nav-link > .fa > .badge {
+            font-size: 0.75rem;
+            position: absolute;
+            right: 0;
+            font-family: sans-serif;
+        }
+
+        .navbar-icon-top .navbar-nav .nav-link > .fa {
+            top: 3px;
+            line-height: 12px;
+        }
+
+        .navbar-icon-top .navbar-nav .nav-link > .fa > .badge {
+            top: -10px;
+        }
+
+        @media (min-width: 576px) {
+            .navbar-icon-top.navbar-expand-sm .navbar-nav .nav-link {
+                text-align: center;
+                display: table-cell;
+                height: 70px;
+                vertical-align: middle;
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+
+            .navbar-icon-top.navbar-expand-sm .navbar-nav .nav-link > .fa {
+                display: block;
+                width: 48px;
+                margin: 2px auto 4px auto;
+                top: 0;
+                line-height: 24px;
+            }
+
+            .navbar-icon-top.navbar-expand-sm .navbar-nav .nav-link > .fa > .badge {
+                top: -7px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .navbar-icon-top.navbar-expand-md .navbar-nav .nav-link {
+                text-align: center;
+                display: table-cell;
+                height: 70px;
+                vertical-align: middle;
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+
+            .navbar-icon-top.navbar-expand-md .navbar-nav .nav-link > .fa {
+                display: block;
+                width: 48px;
+                margin: 2px auto 4px auto;
+                top: 0;
+                line-height: 24px;
+            }
+
+            .navbar-icon-top.navbar-expand-md .navbar-nav .nav-link > .fa > .badge {
+                top: -7px;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .navbar-icon-top.navbar-expand-lg .navbar-nav .nav-link {
+                text-align: center;
+                display: table-cell;
+                height: 70px;
+                vertical-align: middle;
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+
+            .navbar-icon-top.navbar-expand-lg .navbar-nav .nav-link > .fa {
+                display: block;
+                width: 48px;
+                margin: 2px auto 4px auto;
+                top: 0;
+                line-height: 24px;
+            }
+
+            .navbar-icon-top.navbar-expand-lg .navbar-nav .nav-link > .fa > .badge {
+                top: -7px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .navbar-icon-top.navbar-expand-xl .navbar-nav .nav-link {
+                text-align: center;
+                display: table-cell;
+                height: 70px;
+                vertical-align: middle;
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+
+            .navbar-icon-top.navbar-expand-xl .navbar-nav .nav-link > .fa {
+                display: block;
+                width: 48px;
+                margin: 2px auto 4px auto;
+                top: 0;
+                line-height: 24px;
+            }
+
+            .navbar-icon-top.navbar-expand-xl .navbar-nav .nav-link > .fa > .badge {
+                top: -7px;
+            }
+        }
+
+
     </style>
 
     {% block headers %}{% endblock %}
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a href="{% url 'index' %}"><i class="fa fa-cloud-upload"></i> DataDrop</a>
+<nav class="navbar navbar-icon-top navbar-expand-lg navbar-light bg-light some-shadow">
+    <a href="{% url 'index' %}"><h1><i class="fa fa-cloud-upload fa-lg"></i> DataDrop</h1></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -67,6 +201,8 @@
         </ul>
     </div>
 </nav>
-{% block content %}{% endblock %}
+<div id="main-content" style="padding-top: 1%">
+    {% block content %}{% endblock %}
+</div>
 </body>
 </html>

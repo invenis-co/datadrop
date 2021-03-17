@@ -2,13 +2,16 @@
 {% load bootstrap4 %}
 
 {% block content %}
-    <div class="container">
+    <div class="container-fluid">
         <div class="col-md-4 offset-md-4">
-            <div class="text-center">
-                <form method="post">{% csrf_token %}
-                    <p>Are you sure you want to delete "{{ object.file.name }}"?</p>
-                    <input class="btn btn-primary" type="submit" value="Confirm" />
-                </form>
+            <div class="form-box some-shadow">
+                <div class="text-center">
+                    <h1><i class="fa fa-trash primary-color"></i></h1>
+                    <form method="post">{% csrf_token %}
+                        <p>Are you sure you want to delete file "{{ object.file.name }}"?</p>
+                        <input class="btn danger-bg-color" type="submit" value="Confirm" />
+                    </form>
+                </div>
             </div>
         </div>
     </div>
