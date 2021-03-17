@@ -5,33 +5,37 @@
     <div class="text-center">
         <div class="container-fluid">
             <div class="col-md-10 offset-md-1">
-                <h2>Links information</h2>
-                <div style="margin: 50px; padding:10px">
-                    <table class="table">
+                <h1 class="primary-color">Links</h1>
+                <table class="table some-shadow" >
+                    <tr>
+                        <th>Creation date</th>
+                        <th>Email</th>
+                        <th>Company</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Enabled</th>
+                        <th>Uploads</th>
+                        <th>Edit</th>
+                    </tr>
+                    {% for link in object_list %}
                         <tr>
-                            <th>Creation date</th>
-                            <th>Email</th>
-                            <th>Company</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Enabled</th>
-                            <th>Uploads</th>
-                            <th>Edit</th>
+                            <td>{{ link.created_at }}</td>
+                            <td>{{ link.email }}</td>
+                            <td>{{ link.company }}</td>
+                            <td>{{ link.first_name }}</td>
+                            <td>{{ link.last_name }}</td>
+                            <td>
+                                {% if link.enabled %}
+                                    <i class="fa fa-check fa-lg ok-color"></i>
+                                {% else %}
+                                    <i class="fa fa-ban fa-lg danger-color"></i>
+                                {% endif %}
+                            </td>
+                            <td><a href="{% url 'uploads' link.pk %}">{{ link.upload_count }}</a></td>
+                            <td><a href="{% url 'update-link' link.pk %}"><i class="fa fa-edit fa-lg"></i></a></td>
                         </tr>
-                        {% for link in object_list %}
-                            <tr>
-                                <td>{{ link.created_at }}</td>
-                                <td>{{ link.email }}</td>
-                                <td>{{ link.company }}</td>
-                                <td>{{ link.first_name }}</td>
-                                <td>{{ link.last_name }}</td>
-                                <td>{% if link.enabled %}<span class="badge badge-success">{% else %}<span class="badge badge-danger">{% endif %}{{ link.enabled }}</span></td>
-                                <td><a href="{% url 'uploads' link.pk %}"><span class="badge badge-info">{{ link.upload_count }}</span></a></td>
-                                <td><a href="{% url 'update-link' link.pk %}"><i class="fa fa-edit"></i></a></td>
-                            </tr>
-                        {% endfor %}
-                    </table>
-                </div>
+                    {% endfor %}
+                </table>
             </div>
         </div>
     </div>

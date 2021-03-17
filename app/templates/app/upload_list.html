@@ -5,30 +5,27 @@
     <div class="text-center">
         <div class="container-fluid">
             <div class="col-md-10 offset-md-1">
-                <div style="margin: 50px; padding:10px">
-                    <table class="table">
+                <h1 class="primary-color">Uploads</h1>
+                <table class="table some-shadow" >
+                    <tr>
+                        <th>Creation date</th>
+                        <th>Link</th>
+                        <th>File Name</th>
+                        <th>Size</th>
+                        <th>Downloads</th>
+                        <th>Delete</th>
+                    </tr>
+                    {% for upload in object_list %}
                         <tr>
-                            <th>ID</th>
-                            <th>Creation date</th>
-                            <th>Link ID</th>
-                            <th>File Name</th>
-                            <th>Size</th>
-                            <th>Downloads count</th>
-                            <th>Delete</th>
+                            <td>{{ upload.created_at}}</td>
+                            <td><a href="{% url 'update-link' upload.link.pk %}"><i class="fa fa-link fa-lg primary-color"></i></a></td>
+                            <td><a href="{% url 'download' upload.pk %}">{{ upload.file.name }}</a></td>
+                            <td>{{ upload.file.size|humanize_size }}</td> {# Can be disk intensive if no pagination #}
+                            <td><a href="{% url 'downloads' upload.pk %}">{{ upload.download_count }}</a></td>
+                            <td><a href="{% url 'delete-upload' upload.pk %}"><i class="fa fa-trash fa-lg danger-color"></i></a></td>
                         </tr>
-                        {% for upload in object_list %}
-                            <tr>
-                                <td>{{ upload.pk}}</td>
-                                <td>{{ upload.created_at}}</td>
-                                <td><a href="{% url 'update-link' upload.link.pk %}">{{ upload.link.pk }}</a></td>
-                                <td><a href="{% url 'download' upload.pk %}">{{ upload.file.name }}</a></td>
-                                <td>{{ upload.file.size|humanize_size }}</td> {# Can be disk intensive if no pagination #}
-                                <td><a href="{% url 'downloads' upload.pk %}" class="badge badge-info">{{ upload.download_count }}</a></td>
-                                <td><a href="{% url 'delete-upload' upload.pk %}"><i class="fa fa-trash" style="color: #dd4444"></i></a></td>
-                            </tr>
-                        {% endfor %}
-                    </table>
-                </div>
+                    {% endfor %}
+                </table>
             </div>
         </div>
     </div>

@@ -4,7 +4,11 @@
 {% block content %}
     <div class="container-fluid">
         <div class="col-md-4 offset-md-4">
-            <div class="form-box">
+            <div class="form-box some-shadow">
+                <div class="text-center">
+                    <h1><i class="fa fa-link primary-color"></i></h1>
+                </div>
+
                 <form method="post">
                     {% csrf_token %}
                     {% bootstrap_form form %}
@@ -15,16 +19,18 @@
             </div>
         </div>
     </div>
+
     <div class="container-sm">
         <div class="col-md-8 offset-md-2 text-center">
-
             {%  if upload_count %}
                 <h4>Already <a href="{% url 'uploads' object.pk%} ">{{ upload_count }} upload{{ upload_count|pluralize }}</a></h4>
             {%  endif %}
             {% if object.uuid %}
-                <h4>URL for uploader</h4>
-                <a href="{{ url }}">{{ url }}</a>
-                </div>
+                <div class="form-box some-shadow">
+                    <h4>URL for uploader</h4>
+                    <a href="{{ url }}">{{ url }}</a>
                 </div>
             {% endif %}
+        </div>
+    </div>
 {% endblock %}
