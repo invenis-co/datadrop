@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "DataDrop"
-version = "1.0.0"
+version = "1.1.0"
 description = "Drop you data"
 authors = ["benjamin <benjamin@invenis.co>"]
 
@@ -18,7 +18,6 @@ ipython = "^7.12.0"
 pylint = "^2.4.4"
 bandit = "^1.6.2"
 pylint-django = "^2.0.13"
-sentry-sdk = "^0.14.2"
 coverage = "^5.0.3"
 
 
