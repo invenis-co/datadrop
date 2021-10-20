@@ -26,4 +26,4 @@ COPY . /code
 VOLUME /static
 VOLUME /data
 
-CMD exec gunicorn datadrop.wsgi:application --bind 0.0.0.0:8000 --workers 3 --access-logfile=- --error-logfile=-
+CMD exec gunicorn datadrop.wsgi:application --bind 0.0.0.0:8000 --timeout 7200 --workers 3 --access-logfile=- --error-logfile=-
