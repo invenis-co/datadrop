@@ -14,7 +14,7 @@ django-bootstrap4 = "*"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
-ipython = "^7.12.0"
+ipython = "^7.31.1"
 pylint = "^2.4.4"
 bandit = "^1.6.2"
 pylint-django = "^2.0.13"
